@@ -1,19 +1,15 @@
 package com.spring;
 
-import org.apache.http.client.methods.HttpGet;
 import org.junit.Test;
 
-public class HttpClientTest {
+public class HttpClientObjectReturnTest {
 
 	@Test
 	public void test() throws Exception {
-		String url = "http://localhost:8080/hello-world/";
+		String url = "http://localhost:8080/get-requests/";
 		
 		
 		try {
-			
-
-	        HttpGet httpGet = new HttpGet(url);  
 			String response = HttpClientUtil2.httpGetRequest(url);
 			System.out.println(response);
 			
