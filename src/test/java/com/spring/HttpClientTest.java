@@ -13,7 +13,6 @@ public class HttpClientTest {
 		try {
 			
 
-	        HttpGet httpGet = new HttpGet(url);  
 			String response = HttpClientUtil2.httpGetRequest(url);
 			System.out.println(response);
 			
