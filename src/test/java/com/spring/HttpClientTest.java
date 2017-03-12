@@ -18,7 +18,7 @@ import com.google.common.collect.Lists;
 
 public class HttpClientTest {
 
-	String URL = "http://192.168.1.103:8080/hello-world/1";
+	String URL = "http://192.168.1.111:8080/hello-world";
 
 	@Test
 	public void test() throws Exception {
