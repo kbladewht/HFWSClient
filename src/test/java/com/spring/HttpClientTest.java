@@ -1,72 +1,41 @@
 package com.spring;
 
+import java.util.List;
+
+import org.apache.http.Consts;
+import org.apache.http.HttpResponse;
+import org.apache.http.NameValuePair;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.HttpClients;
+import org.apache.http.message.BasicNameValuePair;
+import org.apache.http.util.EntityUtils;
+import org.codehaus.jackson.map.ObjectMapper;
 import org.junit.Test;
+
+import com.google.common.collect.Lists;
 
 public class HttpClientTest {
 
+	String URL = "http://192.168.1.103:8080/hello-world/1";
+
 	@Test
 	public void test() throws Exception {
-		String url = "http://localhost:8080/hello-world/";
-		
-		
-		try {
-			
 
-			String response = HttpClientUtil2.httpGetRequest(url);
-			System.out.println(response);
-			
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
+		List<NameValuePair> params = Lists.newArrayList();
+		params.add(new BasicNameValuePair("name", "Wang He di"));
+		String str = EntityUtils.toString(new UrlEncodedFormEntity(params, Consts.UTF_8));
 
+		HttpGet httpGet = new HttpGet(URL+"?"+str);
+
+		HttpClient httpClient = HttpClients.createMinimal();
+		HttpResponse httpResponse = httpClient.execute(httpGet);
+		
+		String response = EntityUtils.toString(httpResponse.getEntity());
+		System.out.println(response);
+		SayingFH s = new ObjectMapper().readValue(response, SayingFH.class);
+		System.out.print(s);
 	}
-
-//	protected HttpClient getHttpClient() throws Exception {
-//
-//		HttpClientBuilder builder = HttpClientBuilder.create();
-//
-//		SSLContext sc = SSLContext.getInstance("SSL");
-//		sc.init(null, new TrustManager[] { new HX509TrustManager() }, new SecureRandom());
-//
-//		builder.setSSLSocketFactory(new SSLConnectionSocketFactory(sc));
-//
-//		Registry<ConnectionSocketFactory> registry = RegistryBuilder.<ConnectionSocketFactory> create()
-//				.register("https", new SSLConnectionSocketFactory(sc)).build();
-//
-//		builder.setConnectionManager(new BasicHttpClientConnectionManager(registry));
-//
-//		return builder.build();
-//
-//	}
-//
-//	String doHttpPut(String url)
-//			throws UnsupportedEncodingException, IOException, ClientProtocolException, Exception {
-//		HttpGet httpPut = new HttpGet(url);
-//
-////		httpPut.setHeader("Content-Type", "application/json;charset=UTF-8");
-////		httpPut.setEntity(getParamaters(rpmName));
-//
-//		HttpResponse response = getHttpClient().execute(httpPut);
-//		HttpEntity entity = response.getEntity();
-//		String html = EntityUtils.toString(entity);
-//		return html;
-//	}
-
-//	private StringEntity getParamaters(String rpmName) throws UnsupportedEncodingException {
-//
-//		String componentName = "fddd";
-//
-//		JSONObject parms = new JSONObject();
-//
-//		parms.put("ffff", componentName);
-//
-//		String jsonString = parms.toString();
-//		System.out.println(jsonString);
-//
-//		return new StringEntity(jsonString, ContentType.APPLICATION_JSON);
-//	}
 
 }
