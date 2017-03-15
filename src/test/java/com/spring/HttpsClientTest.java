@@ -48,7 +48,7 @@ public class HttpsClientTest {
 	}
 
 	protected HttpClient getHttpClient() throws Exception {
-
+		System.setProperty("javax.net.ssl.trustStore", "ddd");
 		HttpClientBuilder builder = HttpClientBuilder.create();
 
 		SSLContext sc = SSLContext.getInstance("SSL");
