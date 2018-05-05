@@ -24,14 +24,16 @@ public class HttpClientTest {
 
 	@Test
 	public void test() throws Exception {
+ddd
+sss
 
 		List<NameValuePair> params = Lists.newArrayList();
 		params.add(new BasicNameValuePair("name", "Wang He di"));
 		String str = EntityUtils.toString(new UrlEncodedFormEntity(params, Consts.UTF_8));
 
 		HttpGet httpGet = new HttpGet(URL+"?"+str);
-//sfdsfsdf
-sdfsdf
+		
+	//ddd
 		HttpClient httpClient = HttpClients.createMinimal();
 		HttpResponse httpResponse = httpClient.execute(httpGet);
 		
