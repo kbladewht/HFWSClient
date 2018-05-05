@@ -17,7 +17,9 @@ import org.junit.Test;
 import com.google.common.collect.Lists;
 
 public class HttpClientTest {
+	
 
+//sdfsfsdfsdfsdf
 	String URL = "http://192.168.1.111:8080/hello-world";
 
 	@Test
@@ -28,7 +30,8 @@ public class HttpClientTest {
 		String str = EntityUtils.toString(new UrlEncodedFormEntity(params, Consts.UTF_8));
 
 		HttpGet httpGet = new HttpGet(URL+"?"+str);
-
+//sfdsfsdf
+sdfsdf
 		HttpClient httpClient = HttpClients.createMinimal();
 		HttpResponse httpResponse = httpClient.execute(httpGet);
 		
