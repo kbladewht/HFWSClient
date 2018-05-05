@@ -34,6 +34,7 @@ sss
 		HttpGet httpGet = new HttpGet(URL+"?"+str);
 		ff
 	//ddd
+	sdfsfsfsfs
 		HttpClient httpClient = HttpClients.createMinimal();
 		HttpResponse httpResponse = httpClient.execute(httpGet);
 		
