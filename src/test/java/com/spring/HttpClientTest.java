@@ -28,7 +28,8 @@ public class HttpClientTest {
 		String str = EntityUtils.toString(new UrlEncodedFormEntity(params, Consts.UTF_8));
 
 		HttpGet httpGet = new HttpGet(URL+"?"+str);
-
+		
+	//ddd
 		HttpClient httpClient = HttpClients.createMinimal();
 		HttpResponse httpResponse = httpClient.execute(httpGet);
 		
