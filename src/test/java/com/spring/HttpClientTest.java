@@ -32,7 +32,7 @@ sss
 		String str = EntityUtils.toString(new UrlEncodedFormEntity(params, Consts.UTF_8));
 
 		HttpGet httpGet = new HttpGet(URL+"?"+str);
-		
+		ff
 	//ddd
 		HttpClient httpClient = HttpClients.createMinimal();
 		HttpResponse httpResponse = httpClient.execute(httpGet);
